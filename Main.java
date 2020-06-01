@@ -17,7 +17,7 @@ public class Main extends Canvas implements Runnable {
 	private boolean running;
 	private Thread thread;
 	private Parser p;
-	private int[][] mat;
+	private boolean[][] mat;
 
 	public static void main(String[] args) {
 		new Main().start();
@@ -103,7 +103,7 @@ public class Main extends Canvas implements Runnable {
 		g.setColor(Color.white);
 		for(int i = 0; i < this.mat.length; i++) {
 			for(int j = 0; j < this.mat[0].length; j++) {
-				if(this.mat[i][j] == 1) {
+				if(this.mat[i][j]) {
 					g.fillRect(j, i, 1, 1);
 				}
 			}

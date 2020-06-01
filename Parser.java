@@ -93,8 +93,8 @@ public class Parser {
 	private static final int[] CHAR_LINE = {0, 3, 0, 4, 1, 3, 1, 4, 2, 3, 2, 4, 3, 3, 3, 4, 4, 3, 4, 4, 5, 3, 5, 4, 6, 3, 6, 4, 7, 3, 7, 4};
 	
 	//turns string into 8bit matrix
-	public int[][] parseTo8BitMatrix(String s) {
-		int[][] result = new int[8][(8*s.length())];
+	public boolean[][] parseTo8BitMatrix(String s) {
+		boolean[][] result = new boolean[8][(8*s.length())];
 		for(int i = 0; i < s.length(); i++) {
 			switch(s.charAt(i)) {
 			case ' ': //do nothing
@@ -287,10 +287,10 @@ public class Parser {
 	}
 	
 	//uses indices from charData to this.append on display from place n
-	private void append(int[] charData, int n, int[][] display) {
+	private void append(int[] charData, int n, boolean[][] display) {
 		n*=8; //size of each letter
 		for(int i = 0; i < (charData.length/2); i++) {
-			display[charData[2*i]][charData[(2*i)+1]+n] = 1;
+			display[charData[2*i]][charData[(2*i)+1]+n] = true;
 		}
 	}
 }
