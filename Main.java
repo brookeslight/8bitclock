@@ -39,7 +39,7 @@ public class Main extends Canvas implements Runnable {
 	
 	private void init() {
 		JFrame frame = new JFrame("2D Game");
-		frame.setSize(320, 80);
+		frame.setSize(640, 160);
 		frame.add(this);
 		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,14 +48,14 @@ public class Main extends Canvas implements Runnable {
 		frame.setVisible(true);
 		this.requestFocus();
 		this.clock = new Clock();
-		this.clock.setDisplay("h"); //Available chars: !@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+		this.clock.setDisplay("hey!"); //Available chars: !@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 	}
 	
 	@Override
 	public void run() {
 		this.init();
 		long lastTime = System.nanoTime();
-		double amountOfTicks = 60.0;
+		double amountOfTicks = 10.0;
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
@@ -101,7 +101,7 @@ public class Main extends Canvas implements Runnable {
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			//
-		g2d.scale(10, 10);
+		g2d.scale(20, 20);
 		this.clock.render(g);
 		//end draw
 		g2d.setTransform(af);
