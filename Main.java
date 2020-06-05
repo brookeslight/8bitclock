@@ -48,7 +48,7 @@ public class Main extends Canvas implements Runnable {
 		this.requestFocus();
 		//
 		this.p = new Parser();
-		this.mat = p.parseTo8BitMatrix("!@#$%^&*()_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ Hello World!");
+		this.mat = p.parseTo8BitMatrix("!@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 	
 	@Override
