@@ -1,3 +1,4 @@
+
 package main;
 
 import java.awt.Canvas;
@@ -16,8 +17,7 @@ public class Main extends Canvas implements Runnable {
 	private static final long serialVersionUID = -7604959185792845431L;
 	private boolean running;
 	private Thread thread;
-	private Parser p;
-	private boolean[][] mat;
+	private Clock clock;
 
 	public static void main(String[] args) {
 		new Main().start();
@@ -39,16 +39,16 @@ public class Main extends Canvas implements Runnable {
 	
 	private void init() {
 		JFrame frame = new JFrame("2D Game");
-		frame.setSize(960, 800);
+		frame.setSize(320, 80);
 		frame.add(this);
+		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		this.requestFocus();
-		//
-		this.p = new Parser();
-		this.mat = p.parseTo8BitMatrix("!@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		this.clock = new Clock();
+		this.clock.setDisplay("h"); //Available chars: !@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 	}
 	
 	@Override
@@ -84,6 +84,7 @@ public class Main extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
+
 	}
 	
 	private void render() {
@@ -100,14 +101,8 @@ public class Main extends Canvas implements Runnable {
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			//
-		g.setColor(Color.white);
-		for(int i = 0; i < this.mat.length; i++) {
-			for(int j = 0; j < this.mat[0].length; j++) {
-				if(this.mat[i][j]) {
-					g.fillRect(j, i, 1, 1);
-				}
-			}
-		}
+		g2d.scale(10, 10);
+		this.clock.render(g);
 		//end draw
 		g2d.setTransform(af);
 		g.dispose();
