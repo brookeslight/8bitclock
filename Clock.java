@@ -99,7 +99,9 @@ public class Clock {
 	
 	//scrolls display
 	public void scroll() {
-		this.scroll = (this.scroll < this.display[0].length) ? this.scroll + 1 : 1;
+		if(this.display[0].length > 32) {
+			this.scroll = (this.scroll < this.display[0].length) ? this.scroll + 1 : 1;
+		}
 	}
 	
 	//sets the clock's display
