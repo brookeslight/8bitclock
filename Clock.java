@@ -95,6 +95,12 @@ public class Clock {
 	private final byte[] CHAR_z = {2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 3, 4, 3, 5, 4, 3, 4, 4, 5, 2, 5, 3, 6, 1, 6, 2, 6, 3, 6, 4, 6, 5, 6, 6};
 	private final byte[] CHAR_LINE = {0, 3, 0, 4, 1, 3, 1, 4, 2, 3, 2, 4, 3, 3, 3, 4, 4, 3, 4, 4, 5, 3, 5, 4, 6, 3, 6, 4, 7, 3, 7, 4};
 	private boolean[][] display = this.parseTo8BitMatrix("Here");
+	private int scroll = 0;
+	
+	//scrolls display
+	public void scroll() {
+		this.scroll = (this.scroll < this.display[0].length) ? this.scroll + 1 : 1;
+	}
 	
 	//sets the clock's display
 	public void setDisplay(String s) {
@@ -115,7 +121,11 @@ public class Clock {
 			}
 			this.display = currentFrame; //set display to currentFrame so the display doesn't get centered each time
 		} else { //scroll
-			
+			for(int i = 0; i < 8; i++) {
+				for(int j = 0; j < 32; j++) {
+					currentFrame[i][j] = (this.scroll + j < length) ? this.display[i][j+this.scroll] : this.display[i][j+this.scroll-length];
+				}
+			}
 		}
 		return currentFrame;
 	}

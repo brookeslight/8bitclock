@@ -48,7 +48,7 @@ public class Main extends Canvas implements Runnable {
 		frame.setVisible(true);
 		this.requestFocus();
 		this.clock = new Clock();
-		this.clock.setDisplay("hey!"); //Available chars: !@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+		this.clock.setDisplay("Here! "); //Available chars: !@#$%^&*()<>_+=-[]:;/.,\"\\|' abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 	}
 	
 	@Override
@@ -84,7 +84,7 @@ public class Main extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
-
+		this.clock.scroll();
 	}
 	
 	private void render() {
